@@ -305,6 +305,78 @@ Question type choice should follow what the passage naturally supports.
 - if needed, revise the passage slightly to improve question quality
 - do not make the teacher version do all the interpretive work that the question should already test
 
+### Matching Information question rules — MANDATORY
+**Critical: Question order must NOT correspond to paragraph order.**
+
+When creating Matching Information questions ("Which paragraph contains the following information?"), the question order MUST be shuffled so that correct answers do not follow paragraph order (A, B, C, D, E corresponding to Q1, Q2, Q3, Q4, Q5).
+
+Rules:
+- **Always shuffle the question order.** The correct answer for Q1 should NOT be A, and the questions must not follow the paragraph sequence.
+- **Always include NB:** The instruction must always read: "Write the correct letter, A–E.\nNB You may use any letter more than once." — even if no paragraph is used twice in the current set. This is standard IELTS formatting.
+- If the passage has 5 paragraphs and 5 questions, each question should correspond to a different paragraph, but the ORDER must be shuffled (e.g., Q1→C, Q2→A, Q3→E, Q4→B, Q5→D).
+- If the passage has fewer paragraphs than questions, some paragraphs MUST be used more than once, and the NB covers this.
+- **Verify after shuffling**: Read each question against its intended paragraph to confirm the answer is still correct.
+- **Update the Answer Key** in the teacher version to reflect the new question order.
+- Examples of BAD layout (NEVER do this):
+  - ❌ Q1 specific example → A, Q2 scientific term → B, Q3 categorisation → C, Q4 ratio → D, Q5 reason → E
+  - ✅ Q1 categorisation → C, Q2 specific example → A, Q3 reason → E, Q4 scientific term → B, Q5 ratio → D
+
+
+### Question type patterns from Cambridge 19-20 (mandatory reference)
+
+**TRUE / FALSE / NOT GIVEN:**
+Instruction: "Do the following statements agree with the information given in Reading Passage {N}? In boxes {q-range} on your answer sheet, write TRUE if the statement agrees with the information / FALSE if the statement contradicts the information / NOT GIVEN if there is no information on this."
+
+**YES / NO / NOT GIVEN:**
+Instruction: "Do the following statements agree with the claims of the writer in Reading Passage {N}? In boxes {q-range} on your answer sheet, write YES if the statement agrees with the claims of the writer / NO if the statement contradicts the claims of the writer / NOT GIVEN if it is impossible to say what the writer thinks about this."
+- Y/N/NG for opinion/argument passages, T/F/NG for factual passages.
+
+**Notes Completion:**
+Instruction: "Complete the notes below. Choose ONE WORD ONLY from the passage for each answer." (or "ONE WORD AND/OR A NUMBER")
+- Uses section headers organizing related information. Items are short phrases, not full sentences.
+
+**Summary Completion:**
+Instruction: "Complete the summary below. Choose ONE WORD ONLY from the passage for each answer."
+- ONE flowing paragraph with topic header. All blanks in one connected narrative.
+
+**Sentences Completion:**
+Instruction: "Complete the sentences below. Choose ONE WORD ONLY from the passage for each answer."
+- Independent sentences (not connected). Each from different passage parts. RARE format.
+
+**Multiple Choice (single):**
+Instruction: "Choose the correct letter, A, B, C or D. Write the correct letter in boxes {q-range} on your answer sheet."
+
+**Multiple Choice (two answers):**
+Instruction: "Choose TWO letters, A-E. Write the correct letters in boxes {q-range} on your answer sheet."
+- Spans two question numbers (e.g., "Questions 20 and 21").
+
+**Matching Information:**
+Instruction: "Reading Passage {N} has {X} paragraphs, {letter-range}. Which paragraph contains the following information? Write the correct letter, {letter-range}, in boxes {q-range} on your answer sheet."
+- NOT 题文同序: questions are deliberately shuffled, not following paragraph order.
+
+**Matching Headings:**
+Instruction: "Choose the correct heading for each section {range} from the list of headings below. Write the correct number, {roman-numeral-range}, in boxes {range} on your answer sheet."
+- Heading list includes 1-2 extra distractor headings. NOT 题文同序: requires understanding each paragraph as a whole, not linear answer-finding.
+
+**Sentence endings matching:**
+Instruction: "Complete each sentence with the correct ending, A-F, below. Write the correct letter, A-F, in boxes {q-range} on your answer sheet."
+- Sentence stems are incomplete, options are endings.
+
+**Statement-to-expert matching:**
+Instruction: "Look at the following statements (Questions {range}) and the list of experts below. Match each statement with the correct expert, A-D. Write the correct letter, A-D, in boxes {range} on your answer sheet."
+- NOT 题文同序: a person's views may be scattered across the passage.
+
+**Summary with Phrase Bank:**
+Instruction: "Complete the summary using the list of phrases, A-{N}, below. Write the correct letter, A-{N}, in boxes {q-range} on your answer sheet."
+- Answer options provided in a labeled list.
+
+**Flow-chart / Table Completion (C19 only):**
+Instruction: "Complete the flow-chart / table below. Choose ONE WORD ONLY from the passage for each answer."
+
+**题文同序 vs 不同序:**
+✅ 题文同序 (follow passage order): T/F/NG, Y/N/NG, Notes/Summary/Sentences Completion, Multiple Choice, Flow-chart/Table
+❌ NOT 题文同序 (scan/jump): Matching Information, Matching Headings, Statement-to-expert matching
+
 ### Paragraph labeling for Matching questions
 **Critical rule**: Whenever a passage contains **Matching Information** questions ("Which paragraph contains...") or **Matching Headings** questions ("Choose the correct heading for paragraphs..."), **each paragraph must be labeled with a visible letter** at the beginning.
 
@@ -362,6 +434,42 @@ Do not write four unrelated scripts.
 Do not write scripts first and then force questions onto them.
 
 Scripts and questions must be designed together.
+
+### Question type patterns from Cambridge 19 Listening (mandatory reference)
+
+**Section 1: Note Completion (form/notes)**
+- Instruction: "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer."
+- NOT "ONE WORD ONLY" — Section 1 accepts numbers: "ONE WORD AND/OR A NUMBER"
+- Uses a hierarchical note structure with section headers (The park, Subjects studied, Benefits, Practical issues)
+- Items are single-line with: label + blank space + continuation
+- Labels on one side, blanks marked with indented underline
+
+**Section 2: Multiple Choice + Map Labelling**
+- MCQ: "Choose the correct letter, A, B or C." (three options, not four)
+- Map labeling: "Label the map below. Write the correct letter, A-H, next to Questions {range}."
+- Use letters A-H consistently for map labeling
+
+**Section 3: Multiple Choice (TWO letters) + Matching**
+- Two-answer MCQ: "Choose TWO letters, A-E. Write the correct letters in boxes {range} on your answer sheet."
+- Often "Which TWO things/facts..." — questions span two numbers (e.g., Questions 21 and 22)
+- Matching opinions to items: "What is the students' opinion about each of the following? Choose {N} answers from the box and write the correct letter, A-H, next to Questions {range}."
+- Opinion options are listed in a box (e.g., This already seems to be widespread, Retailers should do more to encourage this)
+- The items being matched are listed below
+
+**Section 4: Note Completion**
+- Instruction: "Complete the notes below. Write ONE WORD ONLY for each answer."
+- NOTE: different from Section 1 — Section 4 uses ONE WORD ONLY (no numbers)
+- Also uses hierarchical note structure
+
+**General listening rules from C19:**
+- Part 1: ONE WORD AND/OR A NUMBER
+- Part 4: ONE WORD ONLY
+- Parts 2-3: mix of MCQ, map labeling, matching
+- Always state the number of questions per part (e.g., "Questions 11-15" then "Questions 16-20")
+- MCQ in Section 2 uses 3 options (A, B, C), not 4
+- Map labeling uses letter range (A-H consistently)
+- Two-answer MCQs span two question numbers (e.g., "Questions 21 and 22 — Choose TWO letters, A-E")
+- Matching uses a box of options followed by item list
 
 ### Required number of sections
 Default: **4 sections**
@@ -556,11 +664,57 @@ Both student and teacher versions must be provided as **both DOCX and PDF**.
 - PDF preserves the exact layout for distribution to students
 - PDF generation method: use Word \"Save As → PDF\" or a DOCX-to-PDF converter
 
+### HTML practice version (刷题版) — MANDATORY for reading packages
+Generate a **standalone HTML practice page** for every reading package — a self-contained interactive file students open in any browser for instant-feedback practice.
+
+**File naming:** `U{number}_{theme}_阅读_刷题.html`
+
+**Page layout (reference: U01_日常节奏_阅读_刷题.html):**
+- Single self-contained HTML file (CSS + JS inline; CDN for optional PDF export)
+- Tab bar at top for P1-P5 switching, each with difficulty badge
+- Split-screen: passage (left) + questions (right), independently scrollable
+- Responsive: switches to single-column below 900px
+
+**CSS design:**
+- Warm neutral palette: --bg, --card, --sidebar, --accent (#d97757)
+- Serif (Georgia) for passage, sans-serif (system/PingFang SC) for UI
+- Full viewport height, no horizontal scroll
+
+**Question interaction:**
+| Type | Component |
+|---|---|
+| MCQ | Clickable .mcq-opt divs in .mcq-group |
+| T/F/NG | .tfng-btn toggle buttons |
+| Matching Info | select class="match-select" with A-E |
+| Fill-in | input class="fill-input" |
+| Matching Headings | select class="heading-select" per paragraph |
+
+- Each question has data attributes: data-q="{n}" data-ans="{answer}"
+- Hidden .answer-reveal div per question
+- Check/reveal/reset buttons in bottom action bar + live score
+- Per-question reveal button enabled only after student answers
+
+**JS functions required:** selectMCQ, selectTFNG, switchPassage, checkAll, revealAll, resetAll, toggleHighlight, clearHighlights
+
+**Highlight feature (对标雅思机考):**
+- Add a "🖍 Highlight" toggle button in the action bar
+- When highlight mode is ON, selecting text in the passage column automatically highlights it in **soft yellow** (`rgba(255, 235, 59, 0.4)`)
+- Clicking already-highlighted text removes the highlight
+- "Clear highlights" button removes all highlights in current passage
+- Implementation: `window.getSelection()` + `document.createRange()` to wrap text in `<span class="highlight">`
+- CSS: `.highlight { background-color: #FFEB3B; cursor: pointer; }`
+- Only applies to passage column (`.passage-col`), not questions
+- Switching passages preserves highlights (store per passage panel)
+- This matches real IELTS CBT where you mark key info in the reading text
+
+**Key rule:** HTML covers ALL passages in one file. Answers in hidden reveal divs (not visible until clicked). No separate student/teacher version needed for HTML.
+
 ### Reading package
 - `U{number}_{theme}_阅读_练习_学生版.docx`
 - `U{number}_{theme}_阅读_练习_学生版.pdf`
 - `U{number}_{theme}_阅读_练习_教师版.docx`
 - `U{number}_{theme}_阅读_练习_教师版.pdf`
+- `U{number}_{theme}_阅读_刷题.html`  ← NEW interactive practice HTML
 
 ### Listening package
 - `U{number}_{theme}_听力_练习_学生版.docx`
@@ -595,6 +749,19 @@ Do not deliver until all relevant checks pass.
 - If Matching Information or Matching Headings questions exist, are paragraphs labeled with `[A]`, `[B]`, `[C]`... in the passage text?
 - Is "(not labelled below)" removed from instructions?
 - Are quoted excerpts removed from Matching Headings question references?
+
+### Matching Information checks
+- Is the question order **shuffled** so Q1-5 do not correspond to A-E in sequence?
+- Is "NB You may use any letter more than once." included in the instruction?
+- Are the answers in the Answer Key updated to match the shuffled order?
+
+### Summary/Notes Completion checks
+- Does each blank avoid being a "definition-to-term" mapping (i.e., asking for a concept name that the passage explicitly defines)? 🔴 CRITICAL — most common mistake
+- Is the surrounding context a genuine paraphrase, not a near-verbatim copy with a word removed?
+- Does each blank require comprehension of the passage, not just keyword matching?
+- Is the word limit appropriate for the content? C20 pattern: ONE WORD ONLY or ONE WORD AND/OR A NUMBER (not NO MORE THAN TWO WORDS by default)
+- If Notes format: are section headers used to organize the content hierarchically?
+- Does each blank test a content word (noun/adjective), not a defined term name?
 
 ### Reading checks
 - Are there **3 passages** by default unless user requested otherwise?
@@ -633,6 +800,17 @@ Do not deliver until all relevant checks pass.
 - Is a PDF version generated for both student and teacher versions?
 - Does the PDF preserve the DOCX layout?
 
+### HTML practice version checks
+- Is the HTML file generated for every reading package?
+- Does the HTML include ALL passages in one file with tab switching?
+- Are question interactions implemented for each type (MCQ, T/F/NG, matching, fill-in)?
+- Does each question have data-q and data-ans attributes for validation?
+- Are answer-reveal divs correctly linked to their questions?
+- Does the action bar have Check / Reveal / Reset buttons?
+- Is the layout responsive (single-column below 900px)?
+- Is the HTML file self-contained (no broken external dependencies)?
+- Are answers correct in the data-ans attributes (matching teacher answer key)?
+
 ### Final file checks
 - student / teacher / transcript are separate when required
 - filenames follow the `U{number}_{theme}_{skill_type}_{content_type}_{version}.docx` convention
@@ -653,6 +831,10 @@ If the user gives feedback such as:
 - "教师版多加可迁移表达"
 - "听力题型要更贴近 section 结构"
 - "段落没有编号不方便匹配"
+- "匹配题顺序和段落顺序一样"
+- "匹配题没有 NB 提示"
+- "summary 填空题是直接的术语定义对应测试"
+- "summary 填空题几乎是原文复制"
 - "学生版里怎么有答案"
 - "Section 2 的场景不对"
 
@@ -716,12 +898,103 @@ Example of GOOD paraphrasing:
 - ❌ Bad: "About 10 hours" (direct copy)
 - ✅ Good: "He spent the overwhelming majority of his waking hours inactive at a desk"
 
-### A2. Summary Completion — MANDATORY
+### A2. Fill-in Completion Questions — MANDATORY (CRITICAL)
 
-1. **Must be a coherent paragraph,** NOT isolated sentences each with a blank.
-2. Format: a flowing text with numbered blanks integrated into the narrative.
-3. Instruction: "Complete the summary below. Choose NO MORE THAN TWO WORDS from the passage for each answer."
-4. Answers must appear verbatim in the passage.
+**There are exactly 3 valid formats in real IELTS (C19-20 analysis):**
+
+**Format 1 — NOTES Completion (most common in C20: T1 P1, T2 P1, T3 P1, T4 P1)**
+
+Instruction: "Complete the notes below. Choose ONE WORD ONLY from the passage" (or "ONE WORD AND/OR A NUMBER")
+
+Structure:
+- Has section headers that ORGANIZE related information (e.g., "Appearance:", "Movement:", "Feeding:")
+- Each section header is followed by 1-3 short phrase items with blanks
+- Section headers follow the passage's chronological or categorical order
+- Items are PHRASES (not complete sentences) — often truncated or note-like
+- Items in the same section share a common subtopic
+
+C20 Example (T2 P1 Manatees):
+```
+Manatees - Appearance:
+look similar to dugongs, but with a differently shaped [1].
+Movement:
+need to use their [2] to help turn their bodies
+sense vibrations by [3] on their skin.
+Feeding:
+eat mainly aquatic vegetation, such as [4];
+use their [5] to grasp food.
+```
+
+**Format 2 — SUMMARY Completion (C20 T1 P2 Elm, T2 P2 Procrastination, T4 P3 Guard Dogs)**
+
+Instruction: "Complete the summary below. Choose ONE WORD ONLY from the passage"
+
+Structure:
+- ONE coherent flowing paragraph with a topic header line (e.g., "What makes us procrastinate?")
+- ALL blanks are integrated INTO a single, continuous paragraph — NOT separate sentences
+- The paragraph reads as connected narrative, not isolated facts
+- Each sentence builds on the previous one
+
+C20 Example (T2 P2 Procrastination):
+```
+What makes us procrastinate?
+Many people think procrastination is the result of [17], or an inability to
+organise time efficiently. Recent research links procrastination to emotions
+and shows that people delay tasks that make them feel [18]. We avoid tasks
+because they are associated with [19], such as the possibility of failure in
+[20]. People likely to procrastinate tend to be either [21] or those with
+low self-esteem. Procrastination is often followed by a feeling of [22],
+which worsens mood and leads to more procrastination.
+```
+
+**Format 3 — SENTENCES Completion (rare: C20 T3 P2 Coral, T4 P2 Climate)**
+
+Instruction: "Complete the sentences below. Choose ONE WORD ONLY from the passage"
+
+Structure:
+- Individual independent sentences (NOT connected to each other)
+- Used only when content doesn't naturally form notes or a coherent summary
+- Each sentence tests a different point from different parts of the passage
+- This format is RARE (2 out of 12 fill-in sets in C20)
+
+**CRITICAL RULE — NEVER mix formats.**
+- "Complete the summary" MUST have ONE flowing paragraph with all blanks
+- "Complete the notes" MUST have section headers organizing related items
+- "Complete the sentences" MUST have individual independent sentences
+- ❌ FORBIDDEN: Labeling separate single-sentence questions as "summary" — this doesn't exist in real IELTS
+
+**Blank design principles (from C20 analysis of every fill-in question):**
+
+1. **Blanks test content words that appear verbatim in the passage.**
+   Real C20 answers are overwhelmingly CONCRETE NOUNS:
+   - Body parts: tail, flippers
+   - Plants/animals: seagrasses, jackals, foxes, potatoes
+   - Materials/objects: charcoal, crystals, cellophane, bulbs, charcoal
+   - People/roles: perfectionists, teachers, stakeholders
+   - Places/structures: skyscrapers, dams, desks
+   - Abstract nouns: funding, satisfaction, guilt, autonomy
+   - Adjectives: anxious, dead
+   - Numbers: 1980
+   
+2. **NEVER test the name of a concept the passage explicitly defines.**
+   ❌ FORBIDDEN: "an effect known as ___" when passage says "a phenomenon known as X"
+   ❌ FORBIDDEN: "a condition called ___" when passage says "researchers call this X"
+   ❌ FORBIDDEN: "the term ___ describes..." when passage uses "the term X"
+
+3. **The surrounding context must be a GENUINE paraphrase.**
+   The Procrastination summary is an excellent model: every sentence thoroughly paraphrases the passage, not copying structure but testing comprehension.
+
+4. **Answers must be VERBATIM from the passage.**
+   Always verify: `answer.lower() in passage_text.lower()`
+
+5. **Instruction word limits from C20 (authoritative):**
+   - Reading: "ONE WORD ONLY" (most common, 8/12 sets) or "ONE WORD AND/OR A NUMBER" (4/12)
+   - "NO MORE THAN TWO WORDS" does NOT appear in C20 reading, only in C19
+   - For notes including dates/stats → "ONE WORD AND/OR A NUMBER"
+   - For notes without numbers → "ONE WORD ONLY"
+   - For summaries → "ONE WORD ONLY"
+
+6. **The blank fits grammatically.** The sentence reads naturally when the answer is inserted.
 
 ### A3. Question Type Diversity — MANDATORY
 
