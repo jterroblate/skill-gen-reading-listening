@@ -581,279 +581,97 @@ Each section should be noticeably harder than the previous one:
 
 
 
-### Audio/TTS Generation Requirements (MANDATORY)
+### Audio Generation Process (Robust Workflow)
 
-**Voice Assignment for IELTS Listening Scripts**
+**Follow this exact sequence for every Section. Do not skip steps.**
 
-Each listening script must include a voice map specifying which ElevenLabs voice to use for each speaker role. The map ensures:
-- Role-voice matching (e.g., professional receptionist = warm, clear voice)
-- Gender-appropriate assignment
-- Accent distribution: ~50% British English, ~50% American English
-- Narrator uses a formal, authoritative voice distinct from character voices
+#### Step 0: Pre-Generation Checklist
 
-**Standard Voice Assignment Table:**
+Before any API call, verify ALL:
+- Script word count >= 450 (target 500-600 = 3-4 min)
+- Every voice ID responds 200 (test API before full generation)
+- Gender matches: female characters use female voices; male = male
+- `use_speaker_boost: true` (enhance)
+- Model: `eleven_turbo_v2_5` (v3, not v2)
 
-| Section | Role | Character | Gender | Accent | Recommended Voice | Voice Description |
-|:-------:|------|:---------:|:------:|:------:|:-----------------:|:-----------------:|
-| **S1** | Receptionist | Info provider | Female | British | Rachel | Warm, clear, professional |
-| **S1** | Caller | Customer | Male | American | Antoni | Relaxed, friendly, conversational |
-| **S2** | Radio Host | Narrator/Monologue | Male | American | Michael | Authoritative, deep, professional |
-| **S3** | Student 1 | Discussant | Male | American | Chris | Casual, natural, young adult |
-| **S3** | Student 2 | Discussant | Female | British | Serena | Articulate, warm, intelligent |
-| **S4** | Lecturer | Academic | Female | British | Rachel (or Serena) | Clear, academic, authoritative |
-| **Intro/Background** | Narrator | Scene setter | Male | American | Michael | Official, formal, announcement-style |
+#### Step 1: Script Length (Minimum 450 words)
 
-**ElevenLabs Voice Reference (high-quality pre-made voices):**
+Target: 500-600 words per Section. Verify word count BEFORE calling any API.
+S1+S4 can be slightly shorter (~450), S2+S3 longer (~550).
+Script must read naturally aloud; avoid note form.
 
-| Voice ID | Name | Gender | Accent | Style | Quality Tier |
-|:--------:|:----:|:------:|:------:|:-----:|:-----------:|
-| `CwhRBWXzGAHq8TQ4Fs17` | Roger | Male | American | Laid-back, casual, resonant | Premium |
-| `21m00Tcm4TlvDq8ikWAM` | Rachel | Female | British | Warm, clear, professional | Premium |
-| `ErXwobaYiN019PkySvjV` | Antoni | Male | American | Relaxed, conversational | Premium |
-| `AZnzlk1XvdvUeBnXmlld` | Chris | Male | American | Casual, natural | Premium |
-| `FGY2WhTYpPnrP2DvM3V1` | Serena | Female | British | Articulate, warm | Premium |
-| `flq6f7yk4E4fJM5XTYuZ` | Michael | Male | American | Authoritative, deep | Premium |
-| `ODgSKRJGwBd1vP8Sjm6D` | Bella | Female | American | Warm, friendly | Premium |
-| `oWAxZDx7w5VEj9UJ3VNj` | Oliver | Male | British | Deep, narrative | Premium |
-| `MF3mGyEYCl7XYWbV9V6O` | Ethan | Male | British | Calm, warm | Premium |
-| `Xb7hH8MSUAAhG7kP3iC` | Nicole | Female | American | Warm, professional | Premium |
-| `nPczCjzI2devNBz1CoQ6` | Serena (alt) | Female | British | Articulate, formal | Premium |
+#### Step 2: Voice Assignment (Gender MUST match character)
 
-**Voice Assignment Rules:**
+| Character Type | Gender | Voice | Accent | Role |
+|:--------------|:------:|:-----:|:------:|:----:|
+| Narrator | Male | Michael | American | Official, authoritative |
+| Receptionist/Secretary | Female | Rachel | British | Warm, professional |
+| Caller/Customer | Match name | Match gender | Match accent | Check name gender first! |
+| Radio Host | Male | Michael | American | Authoritative |
+| Student 1 | Match name | Match gender | Match accent | Verify name gender |
+| Student 2 | Match name | Match gender | Match accent | Verify name gender |
+| Lecturer | Female | Rachel | British | Academic, clear |
 
-1. **Narrator choice:**
-   - Use a formal, authoritative voice (Michael - American male or Serena - British female)
-   - Narrator reads scene descriptions (e.g., "You will hear a conversation between...")
-   - Voice should sound like an official exam announcer
+**CRITICAL RULE: Check EVERY character name's gender.**
+- Alice, Sarah, Bella, Mary = female voices
+- Tom, John, David, Mark = male voices
+- NEVER assign male voice to a character with a female name
 
-2. **Character-voice matching:**
-   - Professional roles (receptionist, lecturer, host): use clear, articulate voices
-   - Student/customer roles: use relaxed, natural voices
-   - Authority figures (professor, expert): use deeper, more authoritative voices
+#### Step 3: Audio Generation Rules
 
-3. **Gender distribution:**
-   - Aim for roughly balanced male/female across all 4 sections
-   - S1: Female receptionist + Male caller
-   - S2: Male host (monologue)
-   - S3: Male student + Female student (balanced discussion)
-   - S4: Female lecturer
+- One API call per speaker turn (each with their assigned voice)
+- NEVER use `[pause]`, `[short pause]`, `[long pause]` tags with v2 models
+- Use natural punctuation (periods, commas) for pacing with v3
+- Always use `eleven_turbo_v2_5` model
+- Always enable `use_speaker_boost: true`
 
-4. **Accent distribution:**
-   - Exactly 50% British English, 50% American English across all speakers
-   - British: Rachel, Serena, Oliver, Ethan
-   - American: Michael, Antoni, Chris, Bella, Nicole, Roger
-   - Do NOT mix accents within the same dialogue (both speakers in S1 should have different accents)
+#### Step 4: Combining Segments
 
-5. **Voice quality:**
-   - Always use the highest available model: `eleven_multilingual_v2` or `eleven_turbo_v2_5`
-   - Preview voices before full generation by testing a sample paragraph
-   - For emotional delivery, use v3 audio tags: `[whispers]`, `[laughs]`, `[sighs]`, `[excited]`
-   - For pauses: use `[pause]`, `[short pause]`, `[long pause]` (v3 model)
-   - For numbers/phone numbers: use `--normalize auto` for automatic number expansion
-
-**Script Format for TTS:**
-
-Each listening transcript must be formatted as follows:
-
+CORRECT - use ffmpeg:
 ```
-[Voice: Michael]
-Scene: You will hear a conversation between a receptionist and a caller.
-
-[Voice: Rachel]
-Receptionist: Good morning, City Community Centre. How may I help you?
-
-[Voice: Antoni]
-Caller: Oh hello. I saw your poster about the weekend workshop.
+ffmpeg -f concat -safe 0 -i filelist.txt -c copy output.mp3
 ```
 
-**Pre-generation Checklist:**
-- [ ] Voice map created for all 4 sections
-- [ ] Accent distribution: 50% British / 50% American
-- [ ] Gender distribution: balanced across sections
-- [ ] Narrator voice assigned (formal/authoritative)
-- [ ] Character voices match role and identity
-- [ ] All ElevenLabs voice IDs are valid
-- [ ] Test clip generated for each new voice before full recording
-
-## File outputs and naming
-
-### File naming convention
-Use the following naming pattern to match the existing unit structure:
-
+WRONG - NEVER do this (produces 4-second broken audio):
 ```
-U{number}_{theme}_{skill_type}_{content_type}_{version}.docx
+cat *.mp3 > output.mp3    # DO NOT USE
 ```
 
-Examples:
-- `U08_消费与选择_阅读_练习_学生版.docx`
-- `U08_消费与选择_阅读_练习_教师版.docx`
-- `U08_消费与选择_听力_练习_学生版.docx`
-- `U08_消费与选择_听力_练习_教师版.docx`
-- `U08_消费与选择_听力_文本脚本.docx`
-- `U08_消费与选择_教学材料包.zip`
+#### Step 5: Quality Check (Run BEFORE delivery)
 
-Where:
-- `{number}` = unit number with leading zero (e.g., U00, U01, U08)
-- `{theme}` = theme name in Chinese (e.g., 消费与选择, 日常节奏)
-- `{skill_type}` = `阅读` or `听力`
-- `{content_type}` = `练习` for question sets, `文本脚本` for transcripts
-- `{version}` = `学生版` or `教师版`
+Check all of these:
+1. Duration: 150-240 seconds (3-4 min)
+2. Word count: >= 450 words
+3. File size: >= 1.5MB
+4. Valid MP3 header (starts with ID3 or FF)
+5. Gender: all character genders match their voices
+6. Model: eleven_turbo_v2_5 (v3)
+7. Enhance: use_speaker_boost = true
 
-If the older naming pattern was used (e.g., `consumption_reading_student.docx`), rename to match this convention before delivery.
+Use ffprobe to verify duration:
+```
+ffprobe -v error -show_entries format=duration -of csv=p=0 file.mp3
+```
 
-### DOCX layout requirements
-Generated DOCX files must follow Cambridge IELTS paper-style formatting:
+#### Step 6: File Saving (Handle Spaces in Path)
 
-**Page setup:**
-- A4 paper size
-- Margins: top/bottom 2cm, left/right 2.5cm
-- Font: Calibri (or similar clean sans-serif)
-- Body text size: 11pt
-- Line spacing: 1.5
+The output directory has spaces in its path. Use shell cp with quotes:
+```bash
+cp /tmp/audio.mp3 "/path/with/spaces/file.mp3"
+```
 
-**Document structure:**
-- **Overview page** at the beginning with:
-  - Theme description in Chinese + English
-  - Passage overview table (columns: Passage, Level, Genre, Speaking Topics)
-  - Difficulty path indicator
-  - Suggested use instructions
-- Each passage starts on a **new page** (page break)
+#### Failure Mode Quick Reference
 
-**In-text formatting:**
-- Main title: 20pt bold centred
-- Subtitle: 14pt italic centred, grey (#555555)
-- Section headers: 16pt bold
-- Subsection headers: 13pt bold
-- Body text: 11pt
-- Paragraph labels `[A]`, `[B]`, `[C]`... must be **bold** and visible before each paragraph
-
-**Teacher version formatting:**
-- Same layout as student version
-- Answer indicators in **red bold** (`#CC0000`)
-- Answer explanations in **grey italic** (`#777777`, 10pt)
-- Speaking-Transfer section at the end of each passage
-
-### PDF generation
-Both student and teacher versions must be provided as **both DOCX and PDF**.
-- PDF preserves the exact layout for distribution to students
-- PDF generation method: use Word \"Save As → PDF\" or a DOCX-to-PDF converter
-
-### HTML practice version (刷题版) — MANDATORY for reading packages
-Generate a **standalone HTML practice page** for every reading package — a self-contained interactive file students open in any browser for instant-feedback practice.
-
-**File naming:** `U{number}_{theme}_阅读_刷题.html`
-
-**Page layout (reference: U01_日常节奏_阅读_刷题.html):**
-- Single self-contained HTML file (CSS + JS inline; CDN for optional PDF export)
-- Tab bar at top for P1-P5 switching, each with difficulty badge
-- Split-screen: passage (left) + questions (right), independently scrollable
-- Responsive: switches to single-column below 900px
-
-**CSS design:**
-- Warm neutral palette: --bg, --card, --sidebar, --accent (#d97757)
-- Serif (Georgia) for passage, sans-serif (system/PingFang SC) for UI
-- Full viewport height, no horizontal scroll
-
-**Question interaction:**
-| Type | Component |
-|---|---|
-| MCQ | Clickable .mcq-opt divs in .mcq-group |
-| T/F/NG | .tfng-btn toggle buttons |
-| Matching Info | select class="match-select" with A-E |
-| Fill-in | input class="fill-input" |
-| Matching Headings | select class="heading-select" per paragraph |
-
-- Each question has data attributes: data-q="{n}" data-ans="{answer}"
-- Hidden .answer-reveal div per question
-- Check/reveal/reset buttons in bottom action bar + live score
-- Per-question reveal button enabled only after student answers
-
-**JS functions required:** selectMCQ, selectTFNG, switchPassage, checkAll, revealAll, resetAll, toggleHighlight, clearHighlights
-
-**Highlight feature (对标雅思机考):**
-- Add a "🖍 Highlight" toggle button in the action bar
-- When highlight mode is ON, selecting text in the passage column automatically highlights it in **soft yellow** (`rgba(255, 235, 59, 0.4)`)
-- Clicking already-highlighted text removes the highlight
-- "Clear highlights" button removes all highlights in current passage
-- Implementation: `window.getSelection()` + `document.createRange()` to wrap text in `<span class="highlight">`
-- CSS: `.highlight { background-color: #FFEB3B; cursor: pointer; }`
-- Only applies to passage column (`.passage-col`), not questions
-- Switching passages preserves highlights (store per passage panel)
-- This matches real IELTS CBT where you mark key info in the reading text
-
-**Key rule:** HTML covers ALL passages in one file. Answers in hidden reveal divs (not visible until clicked). No separate student/teacher version needed for HTML.
-
-### Reading package
-- `U{number}_{theme}_阅读_练习_学生版.docx`
-- `U{number}_{theme}_阅读_练习_学生版.pdf`
-- `U{number}_{theme}_阅读_练习_教师版.docx`
-- `U{number}_{theme}_阅读_练习_教师版.pdf`
-- `U{number}_{theme}_阅读_刷题.html`  ← NEW interactive practice HTML
-
-### Listening package
-- `U{number}_{theme}_听力_练习_学生版.docx`
-- `U{number}_{theme}_听力_练习_学生版.pdf`
-- `U{number}_{theme}_听力_练习_教师版.docx`
-- `U{number}_{theme}_听力_练习_教师版.pdf`
-- `U{number}_{theme}_听力_文本脚本.docx`
-- `U{number}_{theme}_听力_文本脚本.pdf`
-
-### Combined bundle
-- `U{number}_{theme}_教学材料包.zip`
-
-If the user requests only one package, only generate the files relevant to that package.
-
----
-
-## Quality checklist before output
-
-Do not deliver until all relevant checks pass.
-
-
-
-### Mandatory Panel Review (CRITICAL — do not skip)
-**Every set of reading materials MUST undergo Panel Review before delivery.**
-
-After generating or modifying any reading passage questions:
-1. **Spawn 3 independent reviewer sub-agents** — each reviews the same passage+questions+answers
-2. Each sub-agent must receive the FULL review criteria from `skill-ielts-reviewer` (Appendix B + 22-point criteria)
-3. **Merge findings by consensus:**
-   - 🔴 3/3 agree → MUST FIX
-   - 🟡 2/3 agree → SHOULD FIX
-   - 🟢 1/3 flags → CONSIDER (optional)
-4. **Apply all 🔴 and 🟡 fixes** before delivery
-5. **Re-review** if major changes were made (run another round of 3 sub-agents)
-6. **Re-review from scratch** if any 🔴 issues remain
-7. Only deliver when all 3 sub-agents agree quality is sufficient
-
-This applies to BOTH:
-- New question generation
-- Modifications to existing questions
-- The U01-U04 units all underwent this process
-
-**This step is non-negotiable.** Do not deliver reading materials without completing Panel Review.
-
-### Source relevance
-- Is the material clearly anchored to the uploaded speaking-topic pack?
-- Would the package still make sense if the source theme were different?
-- Have you avoided generic filler content?
-
-### Student vs Teacher separation
-- Does the student version contain **zero answers, answer keys, or hints**?
-- Does the teacher version include **both questions and answers**?
-- Are answer explanations concise and useful for classroom use?
-
-### Paragraph labeling checks
-- If Matching Information or Matching Headings questions exist, are paragraphs labeled with `[A]`, `[B]`, `[C]`... in the passage text?
-- Is "(not labelled below)" removed from instructions?
-- Are quoted excerpts removed from Matching Headings question references?
-
-### Matching Information checks
-- Is the question order **shuffled** so Q1-5 do not correspond to A-E in sequence?
-- Is "NB You may use any letter more than once." included in the instruction?
-- Are the answers in the Answer Key updated to match the shuffled order?
-
-### Summary/Notes Completion checks
+| Symptom | Cause | Fix |
+|:--------|:------|:----|
+| Audio only 4 seconds | cat instead of ffmpeg | Use ffmpeg concat |
+| "[pause]" spoken aloud | pause tags in v2 model | Remove tags, use v3 model |
+| Alice sounds male | Wrong gender voice | Check character name gender |
+| Audio under 2 min | Script too short | Verify word count >= 450 |
+| File not saved | Path with spaces | Use cp with quotes |
+| Voice returns 404 | Wrong voice ID | Verify IDs before generation |
+| No enhance | use_speaker_boost=False | Always set to True |
+## Summary/Notes Completion checks
 - Does each blank avoid being a "definition-to-term" mapping (i.e., asking for a concept name that the passage explicitly defines)? 🔴 CRITICAL — most common mistake
 - Is the surrounding context a genuine paraphrase, not a near-verbatim copy with a word removed?
 - Does each blank require comprehension of the passage, not just keyword matching?
