@@ -525,135 +525,60 @@ Part 4: Q31-33 easy → Q34-37 medium → Q38-40 harder (abstract)
 In Listening, answers are almost always VERBATIM transcript words.
 The "paraphrase" is in how the QUESTION frames the answer, not in the answer word itself.
 
-### Required number of sections
-Default: **4 sections**
-Default total: **40 questions**
-Default per section: **10 questions**
+### Listening Generation Requirements (MANDATORY)
 
-### Theme cohesion across the four sections
-All sections must belong to the same broad theme cluster drawn from the source pack.
+**1. Difficulty Progression**
+S1 (Easy) → S2 (Medium) → S3 (Medium-Hard) → S4 (Hard)
+- S1: Simple two-person dialogue, concrete information (names, numbers, places, items)
+- S2: Monologue (radio/talk), some inference, MCQ with 3 parallel options
+- S3: Two-person discussion, Choose TWO groups, opinions/comparisons
+- S4: Academic lecture, abstract concepts, hierarchical notes, ONE WORD ONLY
 
-However, the four sections must not feel repetitive.
+**2. Speaking Topic Coverage**
+- Minimum 80% of speaking-topic pack topics must be covered across the 4 sections
+- Map each section's content to specific topics from the pack
+- Verify coverage before generating
 
-They should show progression in:
-- formality
-- abstraction
-- density
-- task type
-- reasoning demand
+**3. Script Length**
+- Target: ~450-600 words per section (3-4 minutes audio at ~150 wpm)
+- S1 and S4 can be slightly shorter; S2 and S3 should be longer
+- Total across all 4 sections: ~1800-2400 words
 
-### Section 1
-**Form**: two-person everyday-life dialogue
+**4. Answer-Transcript Matching (CRITICAL)**
+- Every fill-in answer must appear VERBATIM in the transcript
+- Numbers spoken as words (e.g., "one hundred and fifty") may be answered as digits ("150")
+- Phone numbers spoken digit by digit may be answered as continuous digits
+- MCQ correct answers must be PARAPHRASED in the transcript (not verbatim)
+- MCQ distractors must use transcript words in WRONG context
 
-**Common scene types**:
-- enquiry
-- booking
-- registration
-- workshop sign-up
-- activity registration
-- timetable discussion
-- course arrangement
-- simple service dialogue (e.g., returns/exchanges at a shop)
+**5. MCQ Design Rules**
+- NEVER test number recall ("How many respondents?", "What percentage?")
+- ALWAYS test comprehension: cause-effect, opinion, comparison, purpose
+- 3 options (A/B/C), parallel in length and grammar
+- Choose TWO: 5 options (A-E), span two question numbers ("Questions X and Y")
 
-**Target question style**:
-- form completion
-- note completion
-- simple table / form logic where truly helpful
+**6. Question-Transcript Verification**
+Before delivery, verify for each section:
+- Fill-in answers: `answer.lower() in transcript_text.lower()` — must be True
+- MCQ key words: each option's key phrase must reference transcript content
+- No number-recall MCQs: flag any stem asking "How many", "What percentage", "What number"
+- All 40 questions (10 per section) are answerable from the transcript
 
-**Important rule**:
-The fill-in layout for Section 1 should normally be presented as **embedded form / note completion**, not as a wide empty table that hides the answer order.
+**7. Four Sections, 40 Questions (Standard IELTS Structure)**
+| Section | Type | Questions | Format |
+|---------|------|:---------:|--------|
+| S1 | Dialogue - Notes/Form/Table | 10 | ONE WORD AND/OR A NUMBER |
+| S2 | Monologue - MCQ + Choose TWO | 10 | 3-option A/B/C + A-E |
+| S3 | Discussion - Choose TWO + MCQ | 10 | A-E + A/B/C |
+| S4 | Lecture - Notes | 10 | ONE WORD ONLY |
 
-The student should be able to feel where each blank belongs in the flow of the notes.
+**8. Difficulty Check**
+Each section should be noticeably harder than the previous one:
+- Vocabulary becomes more academic
+- Answers require more inference
+- Distractors become more plausible
+- Section structures become more complex
 
-**Do not** use a table merely because it looks tidy.
-
-**Speaker rule**:
-- dialogue only
-- exactly **two speakers**
-- no multi-speaker scenes
-
-**Duration target**:
-- roughly at least **3 minutes**
-- longer is acceptable if the section remains natural and teachable
-
-**Avoid**:
-- making the whole section only about time / place / money
-- turning it into meaningless clerical detail
-- overpacking it with random numbers
-
-### Section 2
-**Form**: monologue (one speaker)
-
-**Common scene types** (use these as a guide, do not default to the same one every time):
-- **radio programme** — presenter talks about a local event/service/initiative
-- **welcome/orientation talk** — e.g., for new members, new students, new volunteers
-- **introduction to a facility or service** — e.g., community centre, library, shop
-- **talk about a local event** — e.g., a festival, market, workshop series
-- **guide talk / tour** — e.g., a guided walk, museum floor guide (when truly appropriate to the theme)
-- **announcement** — e.g., about a change in service, new opening hours, etc.
-
-**Critical: vary the scene type across different units.** Do not default to "exhibition guide talk" for every unit's Section 2. Choose the scene type that best fits the theme cluster of the source pack. For example:
-- For "Consumption, Objects and Choices": a radio programme about a community sharing initiative
-- For "Learning and Skills": an introduction to a science workshop
-- For "Relationships": a short talk about a community helping initiative
-- For "Technology": a talk introducing a new app or digital service
-
-**Target question styles** (mix and match as appropriate):
-- multiple choice (most common)
-- matching (e.g., match features to locations, people, or zones)
-- map/plan labelling (e.g., label a floor plan, site map, or facility layout)
-- note/table completion (less common but acceptable)
-- sentence completion
-
-**Core requirement**:
-The script must naturally support questions about:
-- reason
-- purpose
-- evaluation
-- viewpoint
-- contrast
-- important information
-- priorities
-- locations and spatial relationships (if map/plan labelling is used)
-
-**Duration target**:
-- roughly at least **3 minutes**
-
-### Section 3
-**Form**: two-person discussion
-
-**Common scene types**:
-- project planning
-- workshop planning
-- review and comparison of options
-- student discussion about an assignment or presentation
-- evaluation of experiences (courses, events, trips)
-
-(Full scenarios list from original — keep as is)
-
-### Section 4
-**Form**: academic monologue / lecture
-
-**Common scene types**:
-- lecture (most common)
-- academic talk / presentation
-- structured explanation of a concept or framework
-
-(Full details from original — keep as is)
-
-### Table rule for fill-in sections (Section 1 & 4)
-Default preference:
-- embedded notes
-- short bullet structures
-- form-style lines
-- sentence-style completion
-
-Avoid:
-- wide grid tables that make it unclear where the blank sits in the text logic
-
-Tables may be used only when they improve clarity and still preserve order. They are **not** the default for fill-ins.
-
----
 
 ## File outputs and naming
 
