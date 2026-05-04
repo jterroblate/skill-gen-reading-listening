@@ -435,41 +435,95 @@ Do not write scripts first and then force questions onto them.
 
 Scripts and questions must be designed together.
 
-### Question type patterns from Cambridge 19 Listening (mandatory reference)
+### Question type patterns from Cambridge 19-20 Listening (mandatory reference)
 
-**Section 1: Note Completion (form/notes)**
-- Instruction: "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer."
-- NOT "ONE WORD ONLY" — Section 1 accepts numbers: "ONE WORD AND/OR A NUMBER"
-- Uses a hierarchical note structure with section headers (The park, Subjects studied, Benefits, Practical issues)
-- Items are single-line with: label + blank space + continuation
-- Labels on one side, blanks marked with indented underline
+**Part 1 — Two-person dialogue (Q1-10)**
+Instruction: "Complete the notes/form/table below. Write ONE WORD AND/OR A NUMBER for each answer."
+(Occasionally Q7-10 use "Write ONE WORD ONLY" instead.)
 
-**Section 2: Multiple Choice + Map Labelling**
-- MCQ: "Choose the correct letter, A, B or C." (three options, not four)
-- Map labeling: "Label the map below. Write the correct letter, A-H, next to Questions {range}."
-- Use letters A-H consistently for map labeling
+Answer characteristics:
+- Answers are 90% single words, ~25% contain numbers
+- Answer words are VERBATIM from the transcript — the speaker says them directly
+- Common answer types: nouns (objects, places, people), numbers/prices, adjectives, names
+- The question text frames the answer at the end of a phrase or in a table cell
 
-**Section 3: Multiple Choice (TWO letters) + Matching**
-- Two-answer MCQ: "Choose TWO letters, A-E. Write the correct letters in boxes {range} on your answer sheet."
-- Often "Which TWO things/facts..." — questions span two numbers (e.g., Questions 21 and 22)
-- Matching opinions to items: "What is the students' opinion about each of the following? Choose {N} answers from the box and write the correct letter, A-H, next to Questions {range}."
-- Opinion options are listed in a box (e.g., This already seems to be widespread, Retailers should do more to encourage this)
-- The items being matched are listed below
+Structure patterns:
+- Notes format: hierarchical with section headers, short phrases with blanks
+- Table format: column headers + rows, each cell may contain a blank
+- Form format: labeled fields with blanks
 
-**Section 4: Note Completion**
-- Instruction: "Complete the notes below. Write ONE WORD ONLY for each answer."
-- NOTE: different from Section 1 — Section 4 uses ONE WORD ONLY (no numbers)
-- Also uses hierarchical note structure
+Transcript interaction:
+- Dialogue structure: greeting → information exchange → closing
+- Questions are answered in order (strictly sequential)
+- Answer often preceded by signal: "Well, ...", "Right.", "Yes, ...", "So, ...", "Actually, ..."
 
-**General listening rules from C19:**
-- Part 1: ONE WORD AND/OR A NUMBER
-- Part 4: ONE WORD ONLY
-- Parts 2-3: mix of MCQ, map labeling, matching
-- Always state the number of questions per part (e.g., "Questions 11-15" then "Questions 16-20")
-- MCQ in Section 2 uses 3 options (A, B, C), not 4
-- Map labeling uses letter range (A-H consistently)
-- Two-answer MCQs span two question numbers (e.g., "Questions 21 and 22 — Choose TWO letters, A-E")
-- Matching uses a box of options followed by item list
+**Part 2 — Monologue (Q11-20)**
+Common formats (in order of frequency):
+1. MCQ: "Choose the correct letter, A, B or C" — ALWAYS 3 options, NEVER 4
+2. Choose TWO: "Choose TWO letters, A-E" — 5 options, 2 answers, cross 2 question numbers
+3. Box matching: "Choose SIX answers from the box" — options A-H, items Q11-16
+4. Map labeling: "Label the map below. Write A-H" — SKIP this, hard to generate
+
+MCQ design rules:
+- Stems: Wh- question OR sentence starter OR topic tag + question
+- 3 options MUST be parallel: same length, same grammatical structure, same specificity
+- Each option references content from the transcript, placed in different contexts
+- Correct answer is paraphrased from transcript, not verbatim
+- Two distractors use similar words to the transcript but in WRONG context
+
+Choose TWO design rules:
+- 5 options (A-E), 2 correct, span "Questions X and Y"
+- All 5 options are complete sentences (Part 2) or verb phrases (Part 3)
+- Answers can be in either order (marked "in either order")
+- Distractors: partially true statements that miss a key detail
+
+**Part 3 — Two-person discussion (Q21-30)**
+Common formats:
+1. Choose TWO letters, A-E — 88% of tests, most common in Part 3
+2. MCQ: "Choose the correct letter, A, B or C"
+3. Box matching: "What is X's opinion about... Choose from the box"
+4. Flowchart: "Complete the flowchart below. Choose FIVE answers from the box"
+
+Choose TWO differences from Part 2:
+- Part 3 options use verb phrases (e.g., "experimenting with designs")
+- Part 2 options use complete sentences (e.g., "The training exercises...")
+- Part 3 has 3-4 consecutive Choose TWO groups, Part 2 has 1-2
+
+Box matching design:
+- Options box: 6-8 opinion/description phrases (A-H)
+- Items: 5-6 topic words or short phrases
+- 2 extra options serve as distractors
+
+**Part 4 — Academic monologue (Q31-40)**
+UNIVERSAL format — 100% of tests:
+- "Complete the notes below. Write ONE WORD ONLY for each answer."
+- Hierarchical notes with section headers
+- Answers are single common nouns, occasionally adjectives
+- Answer words are VERBATIM from the lecture transcript
+- Speaker often emphasises the answer word (slower, louder)
+
+Signal words in lecture:
+- "First of all..." → Q31 area
+- "The main finding is..." → mid questions
+- "Another important factor..." → Q35-37
+- "In conclusion..." → Q38-40
+
+**Difficulty progression within each Part:**
+Part 1: Q1-3 easy → Q4-7 medium → Q8-10 tricky (numbers/details)
+Part 2: Q11-13 easy → Q14-16 medium → Q17-20 harder (Choose2/box match)
+Part 3: Q21-24 medium → Q25-27 harder → Q28-30 hardest (matching/box)
+Part 4: Q31-33 easy → Q34-37 medium → Q38-40 harder (abstract)
+
+**Distractor design patterns (CRITICAL):**
+1. Same word, wrong context — "I used to be short-sighted" (past) vs "is short-sighted" (present)
+2. Similar concept, wrong direction — "face-to-face declined 30%" vs "messages declined 30%"
+3. Near synonym — "quite brief" vs "very short" (close but wrong detail)
+4. Wrong agent — "A gave X to B" vs "B gave X to A"
+5. Wrong number — "£4.95" vs "£5.95"
+
+**Key difference from Reading:**
+In Listening, answers are almost always VERBATIM transcript words.
+The "paraphrase" is in how the QUESTION frames the answer, not in the answer word itself.
 
 ### Required number of sections
 Default: **4 sections**
