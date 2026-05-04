@@ -580,6 +580,101 @@ Each section should be noticeably harder than the previous one:
 - Section structures become more complex
 
 
+
+### Audio/TTS Generation Requirements (MANDATORY)
+
+**Voice Assignment for IELTS Listening Scripts**
+
+Each listening script must include a voice map specifying which ElevenLabs voice to use for each speaker role. The map ensures:
+- Role-voice matching (e.g., professional receptionist = warm, clear voice)
+- Gender-appropriate assignment
+- Accent distribution: ~50% British English, ~50% American English
+- Narrator uses a formal, authoritative voice distinct from character voices
+
+**Standard Voice Assignment Table:**
+
+| Section | Role | Character | Gender | Accent | Recommended Voice | Voice Description |
+|:-------:|------|:---------:|:------:|:------:|:-----------------:|:-----------------:|
+| **S1** | Receptionist | Info provider | Female | British | Rachel | Warm, clear, professional |
+| **S1** | Caller | Customer | Male | American | Antoni | Relaxed, friendly, conversational |
+| **S2** | Radio Host | Narrator/Monologue | Male | American | Michael | Authoritative, deep, professional |
+| **S3** | Student 1 | Discussant | Male | American | Chris | Casual, natural, young adult |
+| **S3** | Student 2 | Discussant | Female | British | Serena | Articulate, warm, intelligent |
+| **S4** | Lecturer | Academic | Female | British | Rachel (or Serena) | Clear, academic, authoritative |
+| **Intro/Background** | Narrator | Scene setter | Male | American | Michael | Official, formal, announcement-style |
+
+**ElevenLabs Voice Reference (high-quality pre-made voices):**
+
+| Voice ID | Name | Gender | Accent | Style | Quality Tier |
+|:--------:|:----:|:------:|:------:|:-----:|:-----------:|
+| `CwhRBWXzGAHq8TQ4Fs17` | Roger | Male | American | Laid-back, casual, resonant | Premium |
+| `21m00Tcm4TlvDq8ikWAM` | Rachel | Female | British | Warm, clear, professional | Premium |
+| `ErXwobaYiN019PkySvjV` | Antoni | Male | American | Relaxed, conversational | Premium |
+| `AZnzlk1XvdvUeBnXmlld` | Chris | Male | American | Casual, natural | Premium |
+| `FGY2WhTYpPnrP2DvM3V1` | Serena | Female | British | Articulate, warm | Premium |
+| `flq6f7yk4E4fJM5XTYuZ` | Michael | Male | American | Authoritative, deep | Premium |
+| `ODgSKRJGwBd1vP8Sjm6D` | Bella | Female | American | Warm, friendly | Premium |
+| `oWAxZDx7w5VEj9UJ3VNj` | Oliver | Male | British | Deep, narrative | Premium |
+| `MF3mGyEYCl7XYWbV9V6O` | Ethan | Male | British | Calm, warm | Premium |
+| `Xb7hH8MSUAAhG7kP3iC` | Nicole | Female | American | Warm, professional | Premium |
+| `nPczCjzI2devNBz1CoQ6` | Serena (alt) | Female | British | Articulate, formal | Premium |
+
+**Voice Assignment Rules:**
+
+1. **Narrator choice:**
+   - Use a formal, authoritative voice (Michael - American male or Serena - British female)
+   - Narrator reads scene descriptions (e.g., "You will hear a conversation between...")
+   - Voice should sound like an official exam announcer
+
+2. **Character-voice matching:**
+   - Professional roles (receptionist, lecturer, host): use clear, articulate voices
+   - Student/customer roles: use relaxed, natural voices
+   - Authority figures (professor, expert): use deeper, more authoritative voices
+
+3. **Gender distribution:**
+   - Aim for roughly balanced male/female across all 4 sections
+   - S1: Female receptionist + Male caller
+   - S2: Male host (monologue)
+   - S3: Male student + Female student (balanced discussion)
+   - S4: Female lecturer
+
+4. **Accent distribution:**
+   - Exactly 50% British English, 50% American English across all speakers
+   - British: Rachel, Serena, Oliver, Ethan
+   - American: Michael, Antoni, Chris, Bella, Nicole, Roger
+   - Do NOT mix accents within the same dialogue (both speakers in S1 should have different accents)
+
+5. **Voice quality:**
+   - Always use the highest available model: `eleven_multilingual_v2` or `eleven_turbo_v2_5`
+   - Preview voices before full generation by testing a sample paragraph
+   - For emotional delivery, use v3 audio tags: `[whispers]`, `[laughs]`, `[sighs]`, `[excited]`
+   - For pauses: use `[pause]`, `[short pause]`, `[long pause]` (v3 model)
+   - For numbers/phone numbers: use `--normalize auto` for automatic number expansion
+
+**Script Format for TTS:**
+
+Each listening transcript must be formatted as follows:
+
+```
+[Voice: Michael]
+Scene: You will hear a conversation between a receptionist and a caller.
+
+[Voice: Rachel]
+Receptionist: Good morning, City Community Centre. How may I help you?
+
+[Voice: Antoni]
+Caller: Oh hello. I saw your poster about the weekend workshop.
+```
+
+**Pre-generation Checklist:**
+- [ ] Voice map created for all 4 sections
+- [ ] Accent distribution: 50% British / 50% American
+- [ ] Gender distribution: balanced across sections
+- [ ] Narrator voice assigned (formal/authoritative)
+- [ ] Character voices match role and identity
+- [ ] All ElevenLabs voice IDs are valid
+- [ ] Test clip generated for each new voice before full recording
+
 ## File outputs and naming
 
 ### File naming convention
