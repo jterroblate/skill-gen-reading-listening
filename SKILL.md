@@ -735,6 +735,30 @@ If the user requests only one package, only generate the files relevant to that 
 
 Do not deliver until all relevant checks pass.
 
+
+
+### Mandatory Panel Review (CRITICAL — do not skip)
+**Every set of reading materials MUST undergo Panel Review before delivery.**
+
+After generating or modifying any reading passage questions:
+1. **Spawn 3 independent reviewer sub-agents** — each reviews the same passage+questions+answers
+2. Each sub-agent must receive the FULL review criteria from `skill-ielts-reviewer` (Appendix B + 22-point criteria)
+3. **Merge findings by consensus:**
+   - 🔴 3/3 agree → MUST FIX
+   - 🟡 2/3 agree → SHOULD FIX
+   - 🟢 1/3 flags → CONSIDER (optional)
+4. **Apply all 🔴 and 🟡 fixes** before delivery
+5. **Re-review** if major changes were made (run another round of 3 sub-agents)
+6. **Re-review from scratch** if any 🔴 issues remain
+7. Only deliver when all 3 sub-agents agree quality is sufficient
+
+This applies to BOTH:
+- New question generation
+- Modifications to existing questions
+- The U01-U04 units all underwent this process
+
+**This step is non-negotiable.** Do not deliver reading materials without completing Panel Review.
+
 ### Source relevance
 - Is the material clearly anchored to the uploaded speaking-topic pack?
 - Would the package still make sense if the source theme were different?
