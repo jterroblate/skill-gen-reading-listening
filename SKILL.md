@@ -215,11 +215,11 @@ Each section must use IELTS-authentic question types. Do not mix types that woul
 
 ### Listening transcript word counts — PER SECTION (MANDATORY)
 Each section's dialogue (excluding narrator instructions) must meet these minimum word counts:
-- Section 1: at least 500 words
-- Section 2: at least 500 words
-- Section 3: at least 500 words
-- Section 4: at least 500 words
-Total listening material: at least 2,000 words across all 4 sections.
+- Section 1: at least 550 words
+- Section 2: at least 550 words
+- Section 3: at least 550 words
+- Section 4: at least 550 words
+Total listening material: at least 2,200 words across all 4 sections.
 These are dialogue word counts — narrator instructions are excluded from the count.
 
 ### Script naturalness requirements (MANDATORY)
@@ -230,6 +230,22 @@ These are dialogue word counts — narrator instructions are excluded from the c
 5. Transitions must feel natural, not like task-driven topic switches
 6. Avoid: sentences over 30 words; academic essay tone in dialogue; perfectly grammatical but unrealistic speech
 7. Topic coverage check comes AFTER naturalisation, not before
+
+### Speaking-transferable expressions in listening (MANDATORY)
+Each listening script must include expressions that students can transfer to their own speaking. Do NOT make the dialogue sound like a phrasebook; instead, embed natural, reusable expressions in context.
+
+**Requirements per section:**
+- S1: at least 3 natural conversational expressions (greetings, polite requests, clarification, confirming info)
+- S2: at least 3 phrases useful for describing/presenting (signposting, suggesting, comparing)
+- S3: at least 4 discussion phrases (agreeing with reservation, expressing doubt, building on others' ideas)
+- S4: at least 3 academic/lecture phrases (signalling structure, emphasising, summarising)
+
+**Selection criteria:**
+- Must be natural, not literary — something a real IELTS speaker would say
+- Must be reusable across multiple topics (not locked to the specific scenario)
+- Must be genuinely teachable: explain what idea the expression conveys and which speaking topics it can transfer to
+
+**In the teacher version:** list these expressions in a dedicated "Speaking-transferable Language" section for each section, following the same format as the reading skill's speaking-transfer.
 
 ### If the user requests both reading and listening
 Use the same overarching theme cluster, but distribute the content strategically:
@@ -837,9 +853,9 @@ S1 (Easy) → S2 (Medium) → S3 (Medium-Hard) → S4 (Hard)
 - Verify coverage before generating
 
 **3. Script Length**
-- Target: ~450-600 words per section (3-4 minutes audio at ~150 wpm)
-- S1 and S4 can be slightly shorter; S2 and S3 should be longer
-- Total across all 4 sections: ~1800-2400 words
+- Target: 550-700 words per section (3-4 minutes audio at ~150 wpm)
+- S1 may be slightly shorter (≥520), S2/S3/S4 should be ≥550
+- Total across all 4 sections: ~2,200-2,800 words
 
 **4. Answer-Transcript Matching (CRITICAL)**
 - Every fill-in answer must appear VERBATIM in the transcript
@@ -932,16 +948,16 @@ Read the ENTIRE script aloud. If any line sounds awkward, rewrite. If any transi
 #### Step 0: Pre-Generation Checklist
 
 Before any API call, verify ALL:
-- Script word count >= 450 (target 500-600 = 3-4 min)
+- Script word count >= 550 (target 550-700 = 3-4 min)
 - Every voice ID responds 200 (test API before full generation)
 - Gender matches: female characters use female voices; male = male
 - `use_speaker_boost: true` (enhance)
 - Model: `eleven_turbo_v2_5` (v3, not v2)
 
-#### Step 1: Script Length (Minimum 450 words)
+#### Step 1: Script Length (Minimum 550 words)
 
-Target: 500-600 words per Section. Verify word count BEFORE calling any API.
-S1+S4 can be slightly shorter (~450), S2+S3 longer (~550).
+Target: 550-700 words per Section. Verify word count BEFORE calling any API.
+S1 can be slightly shorter (≥520), S2/S3/S4 must be ≥550.
 Script must read naturally aloud; avoid note form.
 
 #### Step 2: Voice Assignment (Gender MUST match character)
@@ -1011,7 +1027,7 @@ cp /tmp/audio.mp3 "/path/with/spaces/file.mp3"
 | Audio only 4 seconds | cat instead of ffmpeg | Use ffmpeg concat |
 | "[pause]" spoken aloud | pause tags in v2 model | Remove tags, use v3 model |
 | Alice sounds male | Wrong gender voice | Check character name gender |
-| Audio under 2 min | Script too short | Verify word count >= 450 |
+| Audio under 2 min | Script too short | Verify word count >= 550 |
 | File not saved | Path with spaces | Use cp with quotes |
 | Voice returns 404 | Wrong voice ID | Verify IDs before generation |
 | No enhance | use_speaker_boost=False | Always set to True |
