@@ -1,3 +1,8 @@
+---
+name: skill-gen-reading-listening
+description: Generate classroom-ready IELTS reading and listening materials from a speaking-topic pack, cue-card pack, or speaking question bank. Use when asked to create reading passages/questions, listening scripts/questions, student/teacher versions, transcripts, DOCX/PDF/ZIP outputs, or 根据口语题库生成阅读/听力材料. Includes workflow for invoking reading question review before delivery.
+---
+
 # Skill: Convert a Speaking-Topic Pack into IELTS Reading + Listening Teaching Materials
 
 ## Purpose
@@ -78,7 +83,7 @@ Do not skip steps. Do not jump straight into drafting passages or scripts.
 6. **Write questions that are naturally supported by the texts/scripts.**
 7. **Produce teacher versions with concise explanations and speaking-transfer language.**
 8. **Create separate student / teacher / transcript files as required.**
-9. **Invoke skill-ielts-reviewer in Panel Mode** — spawn 3 independent editor sub-agents to audit every question for answer accuracy, paraphrasing quality, distractor plausibility, and technical correctness. Merge findings by consensus (≥2 editors = fix; 3/3 = must fix). Fix all critical issues before delivery.
+9. **Invoke skill-review-materials in Panel Mode** — spawn 3 independent editor sub-agents to audit every question for answer accuracy, paraphrasing quality, distractor plausibility, and technical correctness. Merge findings by consensus (≥2 editors = fix; 3/3 = must fix). Fix all critical issues before delivery.
 10. **Run the quality checklist before final output.**
 
 If the result fails the reviewer panel or the checklist, revise the material before returning it.
@@ -169,6 +174,62 @@ The four sections must feel like a **coherent thematic cluster**, but must also 
 - task demands
 - information structure
 - cognitive load
+
+### Listening question type requirements — PER SECTION (MANDATORY)
+
+Each section must use IELTS-authentic question types. Do not mix types that would not appear together in the real exam. The following rules are non-negotiable:
+
+**Section 1 (two-person dialogue):**
+- 100% form / note / table / sentence completion
+- NO MCQ, NO matching, NO choose-two
+- Acceptable: NO MORE THAN ONE WORD AND/OR A NUMBER for each blank
+- Tests: specific information extraction (names, numbers, dates, places, preferences, prices, contact details)
+- This is the only section where minor detail recall is appropriate
+
+**Section 2 (monologue):**
+- MCQ + Choose TWO from a list of options, OR
+- MCQ + Matching (match items to descriptions), OR
+- MCQ + table/sentence completion
+- PRIMARY focus: comprehension of main ideas, speaker's attitude, purpose, and the significance of examples
+- DO NOT: test numerical details (number of years, volunteers, percentages) unless they represent a core conceptual point
+
+**Section 3 (two-person discussion):**
+- MCQ + Choose TWO, OR
+- MCQ + Matching, OR
+- MCQ + sentence completion (ONLY when each blank tests a concept, not a minor detail)
+- PRIMARY focus: comprehension of arguments, research conclusions, contrasts between viewpoints, implications
+- **CRITICAL: When the discussion involves research findings, comparative viewpoints, or advice-giving, Choose TWO or Matching is ALWAYS preferred over sentence completion.** Sentence completion in S3 context naturally tests keyword recall — Choose TWO requires understanding which multiple factors are correct.
+- DO NOT: test trivial details (specific dates, small numbers, minor facts like "debating team") that could be answered without understanding the argument
+- Distractors must represent reasonable alternative interpretations, not random unrelated information
+
+**Section 4 (lecture):**
+- ONE WORD ONLY note completion (standard IELTS format)
+- Each blank must test a CONCEPT or KEY TERM (typically nouns or adjectives that represent core ideas)
+- DO NOT: use blanks for minor modifiers, filler words, or trivial details
+- The correct answer should be a word that carries conceptual weight in the lecture's argument structure
+
+**Across all sections:**
+- Every MCQ distractor must be thematically plausible (not obviously ridiculous)
+- Completion blanks must test understanding + recall, not keyword scanning
+- Avoid testing isolated numbers, years, or names unless they are central to the meaning
+
+### Listening transcript word counts — PER SECTION (MANDATORY)
+Each section's dialogue (excluding narrator instructions) must meet these minimum word counts:
+- Section 1: at least 500 words
+- Section 2: at least 500 words
+- Section 3: at least 500 words
+- Section 4: at least 500 words
+Total listening material: at least 2,000 words across all 4 sections.
+These are dialogue word counts — narrator instructions are excluded from the count.
+
+### Script naturalness requirements (MANDATORY)
+1. C19/C20 style reference: read 2-3 real IELTS transcript samples before drafting
+2. Two-pass writing: Content Pass (topic coverage) → Naturalisation Pass (speech quality)
+3. Each speaker needs subtle voice differentiation — verbal habits, hesitation patterns, cadence
+4. Read-Aloud Test is mandatory: if it sounds awkward when spoken aloud, rewrite
+5. Transitions must feel natural, not like task-driven topic switches
+6. Avoid: sentences over 30 words; academic essay tone in dialogue; perfectly grammatical but unrealistic speech
+7. Topic coverage check comes AFTER naturalisation, not before
 
 ### If the user requests both reading and listening
 Use the same overarching theme cluster, but distribute the content strategically:
@@ -481,8 +542,14 @@ Choose TWO design rules:
 Common formats:
 1. Choose TWO letters, A-E — 88% of tests, most common in Part 3
 2. MCQ: "Choose the correct letter, A, B or C"
-3. Box matching: "What is X's opinion about... Choose from the box"
+3. Box matching: "Look at the following descriptions... and the list of ideas below. Match each description with the correct idea, A-H"
 4. Flowchart: "Complete the flowchart below. Choose FIVE answers from the box"
+
+**🚫 FORBIDDEN in Part 3: Person-Name Matching**
+NEVER create matching questions that require test-takers to match statements to speaker names (e.g., "Who said what? Match the statement to the speaker").
+- Real IELTS Listening has zero examples of this format in C19/C20.
+- Test-takers listen for voices and content, not names — forcing name recall is unnatural and unfair.
+- Use box matching instead: match descriptions/concepts to idea phrases (A-H) or choose TWO (A-E).
 
 Choose TWO differences from Part 2:
 - Part 3 options use verb phrases (e.g., "experimenting with designs")
@@ -493,6 +560,41 @@ Box matching design:
 - Options box: 6-8 opinion/description phrases (A-H)
 - Items: 5-6 topic words or short phrases
 - 2 extra options serve as distractors
+
+**Matching Questions HTML Interaction Rules (CRITICAL):**
+When generating HTML for matching questions (box matching, area matching, or heading matching):
+1. Use **click-to-match** interaction, NOT drag-and-drop (HTML5 Drag API is unreliable across browsers — console errors cannot be debugged).
+2. Implementation: click an option → it highlights (`.sel` class) → click a dropzone → option fills in.
+3. Use **inline `onclick` attributes**, not `addEventListener`. Inline attributes avoid closure bugs and scope issues entirely.
+4. Required elements:
+   - Options pool: `<div class="dd-option" onclick="ddClick(this)" data-letter="A">A. Option text</div>`
+   - Dropzones: `<span class="dd-dropzone" data-correct="E" onclick="ddZone(this)"><span class="dd-placeholder">点此放置</span></span>`
+5. Core functions (6 total):
+   - `ddClick(el)` — select/unselect option, add/remove `.sel` class
+   - `ddZone(el)` — place selected option into dropzone, add `.filled` class. **Store the option letter in a `data-placed` attribute on the zone** (not parsed from text content, to avoid "i"/"ii" first-character ambiguity).
+   - `ddRem(btn)` — remove option from dropzone, restore option to pool. **Read `data-placed` attribute** to identify which option to restore.
+   - `ddCheck()` — check all answers, mark zones as `.correct` or `.wrong`
+   - `ddRev()` — reveal all correct answers
+   - `ddRst()` — reset all zones and options (must clear `innerHTML`, remove `filled`/`correct`/`wrong`, restore options to pool)
+6. CSS classes:
+   - `.dd-option.sel` — selected option highlight (orange bg + border + shadow)
+   - `.dd-option.used` — used option (greyed out, pointer-events:none)
+   - `.dd-dropzone.filled` — filled zone (solid border instead of dashed)
+   - `.dd-dropzone.correct` — correct answer (green)
+   - `.dd-dropzone.wrong` — wrong answer (red)
+7. **Button handlers must include both** standard and DD functions:
+   - Submit: `onclick="checkAnswers();ddCheck()"`
+   - Reveal: `onclick="revealAnswers();ddRev()"`
+   - Reset: `onclick="resetAnswers();ddRst()"`
+8. For **reading pages with existing grading systems**:
+   - Keep hidden `<select>` elements with `style="display:none"` that the existing `gradePanel` can read.
+   - Sync DD zone state to hidden select on every place/remove.
+   - After `gradePanel` runs, sync hidden select grade classes (`.correct`/`.wrong-only`) to visible DD zones (`.correct`/`.wrong`).
+   - On reset, also restore DD zones and options to initial state.
+9. **Place answer reveals inside each dd-item**, not grouped at the end.
+10. Use `var` (not `const`/`let`) for DD variables to ensure global accessibility.
+11. This applies to ALL matching types: S2 exhibition area matching, S3 box matching, and reading heading matching.
+12. Test all buttons after implementation: submit, reveal, reset, and individual zone remove.
 
 **Part 4 — Academic monologue (Q31-40)**
 UNIVERSAL format — 100% of tests:
@@ -507,6 +609,22 @@ Signal words in lecture:
 - "The main finding is..." → mid questions
 - "Another important factor..." → Q35-37
 - "In conclusion..." → Q38-40
+
+**S4 Notes Summary Design Rules (CRITICAL):**
+1. Write a proper detailed notes framework with section subheadings (e.g. "Historical background", "Recent improvements"), NOT standalone sentences.
+2. Each section should have 3-5 lines: some with blanks, some as context filler — ALL styled identically.
+3. Context lines (no blank) must NOT be visually downgraded — same font size, color, indentation as blank lines.
+4. Precede each blank with sufficient context so it forms a coherent summary, not an isolated fact.
+5. Answers must be verifiable from the lecture transcript, embedded naturally in the notes.
+6. In the HTML, each blank line gets a ▶ 跳至音频 seek button linked to the correct audio segment.
+7. The notes panel should be styled as one continuous document, NOT individual question blocks.
+8. Example format:
+   ```
+   Historical background
+   · Rivers were used for transport, fishing and recreation.
+   · Pollution from 31______ on river banks.
+   · In 1957, the Thames was declared biologically 32______.
+   ```
 
 **Difficulty progression within each Part:**
 Part 1: Q1-3 easy → Q4-7 medium → Q8-10 tricky (numbers/details)
@@ -579,7 +697,54 @@ Each section should be noticeably harder than the previous one:
 - Distractors become more plausible
 - Section structures become more complex
 
+**9. Script Naturalness Enhancement (MANDATORY — do NOT skip this step)**
+Raw-first-draft scripts sound mechanical. This is NOT an AI model limitation — it's a script-writing process issue. Fix it with the following mandatory steps:
 
+#### 9a. Prepare C19/C20 Style Reference
+Before drafting, read **2-3 real Cambridge IELTS Listening transcripts** from C19/C20 as style reference. Internalise:
+- How topics transition naturally ("Oh that reminds me...", "Actually, speaking of...", "That's interesting because...")
+- Information is discovered through dialogue, not announced in lists
+- Monologue signposting: "Let me turn to...", "Now another thing I should mention..."
+- IELTS speech is natural and unforced, never literary
+
+#### 9b. Write Content Pass (topic-first)
+Draft covering all required speaking topics. Allow transitions to be rough. Prioritise information completeness.
+
+#### 9c. Naturalisation Pass (SPEECH QUALITY GATE)
+After content pass, rewrite ENTIRE script to improve naturalness only:
+
+**Dialogue transitions:**
+- ❌ Q: "Do you exercise?" A: "No, but I enjoy reading."
+- ✅ Q: "So do you make time for exercise?" A: "Not as much as I'd like. I do try to read regularly though — it's the one habit I've managed to keep."
+
+**Monologue flow:**
+- ❌ "Mornings are important. Energy follows a 90-minute cycle."
+- ✅ "Let's start with mornings — how you begin your day really sets the tone. Now, once you're working, you'll notice your concentration dips after about ninety minutes. That's your brain's natural rhythm."
+
+**Character voice differentiation (subtle):**
+- Speaker A: occasional "I mean" or "you know"
+- Speaker B: shorter, more direct answers
+- Speaker C: reflective — "Well, that's interesting..."
+- Keep subtle — IELTS characters, not exaggerated
+
+**Natural conversation markers:**
+- Echo questions: "You mean...?" / "Wait, so...?"
+- Agreement: "Exactly." / "That's a good point."
+- Topic handover: "What about you?" / "What do you make of that?"
+
+#### 9d. Topic Coverage Recheck
+After naturalisation, confirm every required speaking topic is still present. Weave dropped topics back naturally — no forced insertions.
+
+#### 9e. Read-Aloud Test
+Read the ENTIRE script aloud. If any line sounds awkward, rewrite. If any transition feels abrupt, add a bridging phrase.
+
+**Naturalness QC checklist:**
+- [ ] Each speaker sounds distinct (not just different names)
+- [ ] No speaker sounds like a fact list
+- [ ] Dialogue = two people talking, not a Q&A
+- [ ] Monologue has natural signposting and paragraph flow
+- [ ] Read aloud: would a real person say this?
+- [ ] No topic feels "inserted" — every topic arrives naturally
 
 ### Audio Generation Process (Robust Workflow)
 
@@ -953,11 +1118,62 @@ The golden rule: **Improve paraphrasing and distractor quality. Never reduce que
 
 ---
 
-## Cross-Reference: skill-ielts-reviewer
+---
+
+## Generating Interactive Reading Practice HTML
+
+After creating reading passages and questions, generate the interactive practice HTML using the **`skill-gen-html-reading`** skill.
+
+### When to use
+
+- The user requests an interactive practice interface for reading
+- You have completed writing reading passages and questions (student version)
+- You want drag-and-drop heading matching, MCQ/TFNG clickable, submit/reveal/reset
+
+### How to use
+
+1. Read `skills/skill-gen-html-reading/SKILL.md` for full instructions
+2. Build a JSON data file with all 5 passages (passage text, questions, answers, reveals)
+3. Run the generator script:
+
+```bash
+python skills/skill-gen-html-reading/scripts/generate_reading.py \
+  --title "IELTS Reading · U01 Daily Rhythm" \
+  --output "/path/to/刷题.html" \
+  --data /tmp/passage_data.json
+```
+
+4. Validate the output:
+
+```bash
+python skills/skill-gen-html-reading/scripts/validate_reading.py "/path/to/刷题.html"
+```
+
+### Key features
+
+- **Heading matching**: Drag-and-drop slots before each paragraph in the passage column
+- **All question types**: MCQ, TFNG/Yes/No/NG, Matching Information (dropdown), Summary Completion (fill input)
+- **Full heading text**: Shows complete heading text (e.g., "iii. A small commitment that grew naturally"), not just the key
+- **Action bar at top**: Submit/reset/score buttons between tab bar and header — no wasted bottom space
+- **Red/green feedback**: Correct answers turn green, wrong answers turn red after submission
+- **Reveal buttons**: "💡 显示解析" buttons auto-generated, enabled after submission
+- **PDF export**: Generate score report PDF from the browser
+
+### Architecture
+
+```
+Tab Bar → Action Bar (submit/reset/score) → PDF Export → Header → Two-Column Layout
+```
+
+See `skills/skill-gen-html-reading/references/player-architecture.md` for full component tree.
+
+---
+
+## Cross-Reference: skill-review-materials
 
 This skill generates materials. Quality assurance is handled by the companion skill:
 
-**`skill-ielts-reviewer`** — IELTS Reading Question Reviewer & Editor
+**`skill-review-materials`** — IELTS Reading Question Reviewer & Editor
 
 Use it after every generation run:
 - **Panel Mode** (`--panel`): Spawn 3 independent editor agents to audit all questions
