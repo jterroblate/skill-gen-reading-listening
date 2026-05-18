@@ -486,6 +486,44 @@ The **teacher version** must contain:
 - brief justification for why incorrect options are wrong when useful
 - a **speaking-transfer language** section for each passage
 
+### DOCX formatting requirements — listening (MANDATORY)
+Every listening package must include **3 well-formatted DOCX files**:
+
+**1. Listening Script DOCX (`UXX_日常节奏_听力_文本脚本.docx`):**
+- Title at top: unit name + "Listening Script" in English and Chinese
+- Each section has a clear heading (SECTION 1-4) with scene description
+- Speaker labels in bold, colored per character for readability
+- Dialogue formatted as continuous paragraphs, not tables
+- Narrator lines in gray/italic to distinguish
+- Proper paragraph spacing between speaker turns
+- Page footer or end marker indicating end of test
+- Font: Calibri 11pt, headings 14pt bold blue
+
+**2. Student Version DOCX (`UXX_日常节奏_听力_练习_学生版.docx`):**
+- Title at top: unit name + "Student Version"
+- Each section begins with section heading and instruction line (e.g., "Write ONE WORD AND/OR A NUMBER for each answer")
+- Questions presented in clean table or list format with _____ for blanks
+- MCQ options listed A/B/C with radio-button style formatting
+- Choose TWO: 5 options A-E, spanning Q25-26
+- **No answer key, no hints, no explanations**
+- Font: Calibri 11pt, consistent indentation
+
+**3. Teacher Version DOCX (`UXX_日常节奏_听力_练习_教师版.docx`):**
+- Title at top: unit name + "Teacher Version"
+- Complete answer key table per section (Q → Answer)
+- For each question: answer, transcript evidence (verbatim quote), paraphrase explanation, distractor explanation, teaching note
+- Speaking-transfer language section for each passage (see requirements above)
+- Same question formatting as student version + inline answers/annotations
+- Font: Calibri 11pt, answer key in table format
+
+**Naming convention (mandatory):**
+```
+U03_人际关系_听力_文本脚本.docx          # Script
+U03_人际关系_听力_练习_学生版.docx         # Student version
+U03_人际关系_听力_练习_教师版.docx         # Teacher version
+```
+All three DOCX files must use the same unit name prefix and be placed in the `UXX_听力/` folder.
+
 ### Speaking-transfer language for reading
 For each passage, select a small number of expressions that are:
 - natural
